@@ -1,20 +1,70 @@
 # Technology Automation
 
-A practical collection of automation concepts, scripts and technology solutions designed to improve operational efficiency, security and visibility.
+I've spent much of my career leading technology teams rather than working as a full-time developer.
 
-## Purpose
+I've also found that staying close to the technology makes me a better technology leader.
 
-Automation should not simply replace manual tasks.
+This repository is a collection of practical automation examples, scripts and experiments covering IT operations, cybersecurity, Microsoft 365, infrastructure and data.
 
-Effective automation should:
+Some are practical examples of problems technology teams regularly encounter. Others are here simply because experimenting with technology is one of the best ways to understand it.
 
-- Reduce operational effort
-- Improve consistency
-- Reduce human error
-- Increase visibility
-- Strengthen security
-- Improve scalability
-- Enable better use of technology resources
+The objective isn't to showcase software engineering.
+
+It's to demonstrate how relatively simple technology can often solve useful business and operational problems.
+
+---
+
+## Why Automation?
+
+Automation shouldn't start with:
+
+**"What can we automate?"**
+
+I prefer to start with:
+
+**"Where are we spending time doing something repetitive, inconsistent or unnecessarily manual?"**
+
+That might be:
+
+- Producing a report
+- Checking infrastructure
+- Managing user accounts
+- Validating a security control
+- Processing data
+- Monitoring capacity
+- Performing a repetitive administrative task
+
+Sometimes the right answer is automation.
+
+Sometimes it isn't.
+
+---
+
+## My Approach
+
+A useful automation should generally improve one or more of:
+
+**Efficiency + Consistency + Visibility + Security + Scale**
+
+I also think automation should be:
+
+**Secure + Repeatable + Observable + Recoverable**
+
+### Secure
+
+Automation should operate with appropriate permissions and protect sensitive information.
+
+### Repeatable
+
+The same process should produce predictable outcomes.
+
+### Observable
+
+It should be possible to understand what happened and identify when something went wrong.
+
+### Recoverable
+
+Failures need to be detectable and there should be a practical way to recover.
 
 ---
 
@@ -22,7 +72,7 @@ Effective automation should:
 
 ### IT Operations
 
-Automation of repetitive operational activities such as:
+Automation can remove repetitive operational effort from activities such as:
 
 - User administration
 - File management
@@ -33,7 +83,7 @@ Automation of repetitive operational activities such as:
 
 ### Cybersecurity
 
-Automation can support:
+Security automation can support:
 
 - Security monitoring
 - Access management
@@ -47,7 +97,7 @@ Automation can support:
 Examples include:
 
 - User lifecycle management
-- Microsoft Graph automation
+- Microsoft Graph
 - Reporting
 - Mailbox administration
 - Group management
@@ -55,7 +105,7 @@ Examples include:
 
 ### Infrastructure
 
-Automation can support:
+Automation can assist with:
 
 - Server configuration
 - Software deployment
@@ -76,44 +126,114 @@ Automation can reduce manual effort associated with:
 
 ---
 
-## Automation Principles
+## Practical Examples
 
-Automation should be:
+This repository includes several small examples designed around real technology activities.
 
-**Secure + Repeatable + Observable + Recoverable**
+### User Account Auditing
 
-### Secure
+Using PowerShell to review account information and improve visibility of the environment.
 
-Automation should operate using appropriate permissions and protect sensitive information.
+[View User Account Audit](scripts/user-account-audit.md)
 
-### Repeatable
+### Microsoft 365 Reporting
 
-The same inputs should produce predictable outcomes.
+Using automation to retrieve and report information from a Microsoft 365 environment.
 
-### Observable
+[View Microsoft 365 User Reporting](microsoft365/user-report.md)
 
-Automation should provide sufficient logging and monitoring.
+### Security Control Auditing
 
-### Recoverable
+Demonstrating how simple automation can assist with validating security controls and producing repeatable results.
 
-There should be a way to identify failures and recover from unexpected outcomes.
+[View Security Control Audit](security/security-control-audit.md)
+
+### Proactive Infrastructure Monitoring
+
+Using automated monitoring to identify capacity issues before they become service-impacting incidents.
+
+[View Proactive Monitoring Case Study](examples/proactive-monitoring.md)
+
+---
+
+## From Script to Business Outcome
+
+The code itself is rarely the most interesting part.
+
+A relatively small script might save only a few minutes each time it runs.
+
+But if the task happens frequently, across multiple systems or multiple people, the value starts to compound.
+
+The progression I look for is:
+
+**Manual Task → Repeatable Process → Automation → Visibility → Operational Improvement**
+
+This is also why I prefer automation that produces something observable — a report, alert, log, dashboard or measurable outcome — rather than automation that disappears silently into the environment.
 
 ---
 
 ## Automation Lifecycle
 
-A practical automation lifecycle is:
+For anything moving beyond experimentation, I use a simple lifecycle:
 
 **Identify → Assess → Design → Build → Test → Deploy → Monitor → Improve**
 
+Not every script needs enterprise-level engineering.
+
+The level of control should reflect what the automation can affect.
+
+A reporting script and an automation capable of changing hundreds of user accounts clearly require different levels of testing, permissions and change control.
+
 ---
 
-## Executive Perspective
+## Technical Depth & Technology Leadership
 
-The objective of automation is not to automate everything.
+I don't believe a CIO or IT Director needs to be the strongest engineer in the room.
 
-The objective is to identify where technology can create measurable improvements in:
+In fact, they usually shouldn't be.
 
-**Efficiency + Security + Quality + Scale**
+Their role is to build teams containing people with deeper specialist expertise.
 
-Good automation allows technology teams to spend less time performing repetitive tasks and more time delivering strategic value.
+But I do believe technology leaders benefit from remaining technically curious.
+
+Being able to understand a script, follow an architecture discussion, question an implementation approach or build a small proof of concept makes conversations with technical teams considerably more useful.
+
+It also helps distinguish between:
+
+**"Technically possible"**
+
+and:
+
+**"Sensible thing to do."**
+
+Both matter.
+
+---
+
+## Back to Basics
+
+There is also a small collection of deliberately simple programming examples in this repository.
+
+No GitHub portfolio involving code feels entirely complete until somebody prints:
+
+**"Hello, World!"**
+
+Consider that requirement satisfied.
+
+The examples compare some basic programming concepts across different languages before progressing toward something more useful.
+
+[Back to Basics](basics/README.md)
+
+---
+
+## Perspective
+
+Automation is not valuable simply because a manual process has been replaced with code.
+
+Good automation should make something **faster, safer, more consistent, more visible or easier to scale**.
+
+And sometimes a ten-line script that removes an annoying repetitive task is more useful than an elaborate technical solution.
+
+The important part is understanding the problem first.
+
+Then use as much technology as the problem actually needs.
