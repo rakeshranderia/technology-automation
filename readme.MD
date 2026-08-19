@@ -210,9 +210,11 @@ Both matter.
 
 ---
 
-## Back to Basics
+## Technology Playground
 
-There is also a small collection of deliberately simple programming examples in this repository.
+I still enjoy experimenting with technology, so this repository also includes a small playground for things that don't need a business case or an executive steering committee.
+
+### Back to Basics
 
 No GitHub portfolio involving code feels entirely complete until somebody prints:
 
@@ -220,9 +222,15 @@ No GitHub portfolio involving code feels entirely complete until somebody prints
 
 Consider that requirement satisfied.
 
-The examples compare some basic programming concepts across different languages before progressing toward something more useful.
+This is a deliberately simple comparison of programming fundamentals across Python, PowerShell and JavaScript:
 
-[Back to Basics](basics/README.md)
+**Hello World → Variables → Arrays → Loops → Conditions → Functions**
+
+[Explore Back to Basics](playground/basics/README.md)
+
+The examples aren't intended to demonstrate advanced software engineering.
+
+They're there because understanding the fundamentals still matters — and occasionally it's enjoyable to write something that doesn't require a project plan.
 
 ---
 
