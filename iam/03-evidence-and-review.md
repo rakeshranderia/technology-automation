@@ -1,75 +1,61 @@
-# 03 — Evidence, Exceptions and Access Review
+# 03 — Evidence and Review
 
-## Automation is not the control owner
+## Problem
 
-PowerShell can execute repeatable actions quickly, but it should not silently decide:
+A control can operate correctly and still be difficult to demonstrate if evidence is inconsistent or retained only in administrator knowledge.
 
-- who should retain access;
-- who should receive a former employee's mailbox;
-- whether an inherited ACL is appropriate;
-- whether a privileged entitlement is justified;
-- whether an exception is acceptable.
+## Simple Explanation
 
-Those remain business / control-owner decisions.
+Technical activity becomes stronger control evidence when it is:
 
-## A useful evidence pattern
+**Repeatable → Timestamped → Reviewable → Retained**
 
-For each automated control, retain:
+Evidence should answer: what was expected, what happened, who/what performed it, when, what exceptions occurred and who reviewed the result.
 
-### Input
+## Practical Pattern
 
-- identity or resource in scope;
-- request / trigger;
-- operator;
-- date/time.
+### Capture Execution
+Record timestamp, operator/system identity, target, action, result and exceptions.
 
-### Action
+### Preserve Before/After Information
+Where useful, retain membership changes, mailbox state, ACL exports and unresolved items.
 
-- action attempted;
-- system;
-- command / control step;
-- outcome.
+### Notify
+Use completion notifications to record completion time, target identity, delegate applied and exceptions.
 
-### Exception
+### Review
+Require the appropriate control owner to review exceptions, retained access or periodic certifications.
 
-- failed action;
-- reason where available;
-- manual follow-up owner.
+### Retain
+Retain evidence according to risk, audit, investigation and organisational retention requirements.
 
-### Output
+## Example Evidence Flow
 
-- CSV / log path;
-- completion notification;
-- review date or next control activity.
+**Request / Approval → Execution Log → Entitlement Changes → Exceptions → Completion Notification → Review**
 
-## Periodic access review
+For file shares:
 
-A lightweight review can start with a simple exported dataset:
+**Scan Scope → ACL Export → Group Mapping → Reviewer Decision → Remediation → Follow-up Evidence**
 
-**Identity → Resource → Right → Direct/Inherited → Group → Group members → Reviewer decision**
+## Evidence Produced
 
-Reviewer decisions might be:
+- execution logs;
+- access exports;
+- change records;
+- approval references;
+- completion notifications;
+- exception records;
+- reviewer sign-off;
+- remediation confirmation.
 
-- retain;
-- remove;
-- investigate;
-- exception approved.
+## Control Alignment
 
-The important thing is that decisions are explicit rather than implied by inactivity.
+Supports logging, monitoring, access review, identity lifecycle, change evidence and assurance objectives.
 
-## Evidence lifecycle
+See [`ISO-27001-control-map.md`](ISO-27001-control-map.md).
 
-Do not keep access-review exports forever simply because storage is cheap.
+## Caveats
 
-Apply the organisation's:
+A successful script does not prove every relevant system was included, the access decision was appropriate, indirect access was removed or that someone reviewed the evidence.
 
-- records-retention requirements;
-- privacy requirements;
-- log-protection controls;
-- access restrictions.
-
-## Practical principle
-
-> **Automation removes repetitive effort.  
-> Evidence makes the control observable.  
-> A named owner makes the decision accountable.**
+**Good evidence shows what happened. Good governance determines whether what happened was appropriate.**

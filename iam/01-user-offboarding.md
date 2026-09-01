@@ -1,118 +1,59 @@
-# 01 — User Offboarding as a Repeatable Control
+# 01 — User Offboarding
 
 ## Problem
 
-A user can be disabled in Active Directory and still retain effective access through:
+User offboarding often spans more systems than simply disabling an Active Directory account. Access may remain through groups, Microsoft 365 licences, Teams, delegated mailboxes/calendars, shared resources, local file shares and application roles.
 
-- Microsoft 365 groups;
-- distribution lists;
-- mailbox or calendar delegation;
-- Teams / SharePoint membership;
-- local file-share ACLs;
-- assigned cloud licences;
-- delegated access held by other identities.
+## Simple Explanation
 
-Treating “disable account” as “offboarding complete” creates avoidable residual access.
+The objective is to remove access when it is no longer required while preserving any business information or delegated access that legitimately needs to remain.
 
-## Simplified workflow
+**Identify → Disable → Remove → Preserve → Evidence → Review**
 
-**Identify → Disable → Revoke → Remove → Preserve → Delegate → Log → Notify**
+## Practical Pattern
 
 ### Identify
-
-Capture the account and relevant identifiers before making changes.
-
-Examples:
-
-- `SamAccountName`
-- UPN / email address
-- manager
-- mailbox
-- current group memberships
+Confirm the user, effective termination date, business owner, retention requirements, required delegation and known local/application access.
 
 ### Disable
+Restrict authentication, disable the account and revoke active sessions where appropriate.
 
-Typical directory actions:
+### Remove
+Review and remove AD groups, Microsoft 365 groups, distribution lists, Teams access, delegated mailbox/calendar permissions, file-share permissions and licences where appropriate.
 
-- disable the AD account;
-- optionally move it to a Disabled Users OU;
-- clear or update agreed account attributes;
-- disable / block cloud sign-in where required.
-
-### Revoke and remove
-
-Remove access from the systems in scope:
-
-- AD security groups;
-- Microsoft 365 / Azure AD groups;
-- distribution groups / lists;
-- Microsoft 365 licences;
-- mailbox and calendar permissions;
-- Teams / SharePoint memberships;
-- local file-share permissions.
-
-### Preserve business information
-
-Where required:
-
-- hide the former user from the GAL;
-- convert the mailbox to shared;
-- preserve required mailbox content;
-- avoid removing the mailbox's `SELF` permission.
-
-### Delegate only when requested
-
-A useful offboarding workflow can prompt for an optional delegate.
-
-If supplied:
-
-- assign **Full Access**;
-- assign **Send As**.
-
-If blank:
-
-- skip delegation cleanly.
-
-This keeps delegation as a business decision rather than an automatic entitlement.
-
-### File-share cleanup
-
-Where legacy/on-premises shares remain in scope, recursively remove explicit permissions associated with the former identity.
-
-Production implementations should define the exact shares in scope rather than indiscriminately scanning every server.
+### Preserve
+Where required, convert the mailbox to shared, hide the former user from the GAL, retain required records and delegate approved mailbox access.
 
 ### Evidence
+Capture groups removed, mailbox changes, delegation, file-share access, timestamps, exceptions and completion notification.
 
-Write an audit log covering:
+### Review
+Escalate exceptions where ownership is unclear, retention applies or legacy systems cannot be automated safely.
 
-- start/end time;
-- account;
-- each attempted action;
-- success/failure;
-- exceptions;
-- delegate, if any;
-- log/output path.
-
-### Notify
-
-Send a completion message containing:
-
-- account processed;
-- high-level actions completed;
-- exceptions requiring manual follow-up;
-- delegate if used;
-- audit-log path.
-
-## Control outcome
-
-The useful outcome is not “the script ran”.
-
-It is:
-
-> **The identity was disabled, known entitlements were removed, business information was handled deliberately, exceptions were visible, and an evidence trail was produced.**
-
-## Example
+## Example Implementation
 
 See [`scripts/Invoke-UserOffboarding-Example.ps1`](scripts/Invoke-UserOffboarding-Example.ps1).
 
-The sample is intentionally a framework rather than a drop-in production script. Every organisation has different group, Exchange, Teams, SharePoint, retention and approval requirements.
+Typical actions include disabling the identity, removing entitlements, revoking delegated access, hiding from the GAL, converting the mailbox to shared, applying approved delegation, logging actions and notifying completion.
+
+## Evidence Produced
+
+- request or approval reference;
+- target identity;
+- execution date/operator;
+- removed entitlements;
+- mailbox/delegation changes;
+- exceptions;
+- completion notification.
+
+## Control Alignment
+
+Supports identity lifecycle, access provisioning/deprovisioning, access review, privileged/sensitive access, logging and evidence objectives.
+
+See [`ISO-27001-control-map.md`](ISO-27001-control-map.md).
+
+## Caveats
+
+Production workflows should consider service accounts, privileged identities, legal hold, SaaS access, device recovery, secrets/certificates, workflow ownership and segregation-of-duties requirements.
+
+**Automation supports the control owner. It does not replace access ownership or business approval.**

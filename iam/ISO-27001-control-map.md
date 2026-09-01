@@ -1,16 +1,43 @@
-# IAM Technical Control Map
+# ISO/IEC 27001:2022 — Illustrative IAM Control Map
 
-| Operational need | Practical pattern | Example evidence | ISO 27001:2022 control intent |
-|---|---|---|---|
-| Remove access when employment ends | Structured offboarding workflow | Offboarding log, disabled account, entitlement-removal results | A.5.16 Identity management; A.5.18 Access rights |
-| Reduce residual group access | Enumerate and remove group memberships | Before/after membership output | A.5.15 Access control; A.5.18 Access rights |
-| Manage mailbox delegation deliberately | Optional named delegate rather than automatic reassignment | Delegate, approval/request, Exchange audit/log | A.5.15; A.5.18 |
-| Find hidden file-share access | Recursive ACL inventory | CSV of identity, rights, path, inheritance | A.5.15; A.8.3 Information access restriction |
-| Make security-group access understandable | Enrich ACLs with group/member metadata | Group/member review dataset | A.5.16; A.5.18 |
-| Detect failed deprovisioning steps | Structured logging and exception capture | Error entries and follow-up actions | A.8.15 Logging; A.8.16 Monitoring activities |
-| Review privileged access separately | Identify privileged groups / elevated ACLs | Privileged-access review | A.8.2 Privileged access rights |
-| Keep automation accountable | WhatIf/test, scoped targets, named control owner | Change record, script log, reviewer decision | Supports governance and auditability across access controls |
+This page provides an illustrative mapping between the IAM patterns in this module and relevant ISO/IEC 27001:2022 control themes.
 
-## Important
+It is not a Statement of Applicability, certification claim or substitute for formal control interpretation.
 
-The table maps technical patterns to the **intent** of relevant controls. It does not imply that a script, command or export is sufficient evidence of conformity by itself.
+| Library Pattern | Relevant Control | Practical Intent |
+|---|---|---|
+| User offboarding | A.5.15 Access control | Govern access according to business and security requirements. |
+| User offboarding | A.5.16 Identity management | Manage identities throughout their lifecycle. |
+| User offboarding | A.5.18 Access rights | Provision, review, modify and remove access appropriately. |
+| Privileged/sensitive access | A.8.2 Privileged access rights | Restrict and manage privileged access. |
+| File-share access visibility | A.8.3 Information access restriction | Restrict access to information in line with requirements. |
+| Execution/change evidence | A.8.15 Logging | Record relevant activities and events. |
+| Review/exception monitoring | A.8.16 Monitoring activities | Monitor relevant systems and activities. |
+
+## How the Patterns Connect
+
+### Identity Lifecycle
+**Identify → Disable → Remove → Preserve → Evidence → Review**
+
+### Access Visibility
+**Discover → Normalise → Map → Export → Review**
+
+### Evidence
+Logs, exports, notifications and review records can support assurance when incorporated into an approved control process.
+
+## Important Distinction
+
+A script does not itself make an organisation compliant.
+
+- disabling a user does not prove an effective identity-lifecycle process;
+- exporting ACLs does not prove permissions were reviewed;
+- generating a log does not prove someone monitors it;
+- mapping a script to a control does not prove control effectiveness.
+
+A stronger model is:
+
+**Policy / Requirement → Control Owner → Technical Pattern → Evidence → Review → Improvement**
+
+## Disclaimer
+
+Formal ISO/IEC 27001 implementation should be based on the organisation's own scope, risk assessment, Statement of Applicability, policies, procedures and assurance requirements.
